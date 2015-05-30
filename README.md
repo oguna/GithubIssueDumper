@@ -9,7 +9,7 @@ Githubで管理されたリポジトリのIssueをダウンロードします。
 
 - ID
 - State
-- User ID
+- User Login Name
 - Created At
 - Closed At
 - Labels
