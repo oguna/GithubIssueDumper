@@ -29,7 +29,7 @@ public class Main {
 		Map<String,String> issueFileter = new HashMap<String,String>();
 		issueFileter.put("state", "all");
 		PageIterator<Issue> pageItr = issueService.pageIssues(userName, repositoryName, issueFileter);
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'"); // ISO 8601
 		File file = new File(outputFilename);
 		try(FileWriter writer = new FileWriter(file)) {
 			StringBuilder sb = new StringBuilder();
@@ -43,7 +43,7 @@ public class Main {
 					sb.append(", ");
 					sb.append(issue.getState());
 					sb.append(",");
-					sb.append(issue.getUser().getId());
+					sb.append(issue.getUser().getLogin());
 					sb.append(",");
 					sb.append(simpleDateFormat.format(issue.getCreatedAt()));
 					sb.append(", ");
@@ -52,9 +52,9 @@ public class Main {
 					}
 					sb.append(",\"");
 					sb.append(issue.getLabels().toString());
-					sb.append("\",");
-					sb.append(issue.getTitle().replaceAll("\"", "\\\""));
-					sb.append("\n");
+					sb.append("\",\"");
+					sb.append(issue.getTitle().replaceAll("\"", "\"\"")); // RFC 4180
+					sb.append("\"\n");
 					writer.write(sb.toString());
 				}
 			}
