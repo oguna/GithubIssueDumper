@@ -17,11 +17,5 @@ Githubで管理されたリポジトリのIssueをダウンロードします。
 
 ダウンロードする際は、GithubAPIのレート制限に注意してください。
 
-適当な場所に下記コードを追加し、userとpasswordを自分のアカウントのに設定すると、制限が緩和されます。
-
-```java
-client.setCredentials(user, password);
-```
-
 Public Domain (CC0) のもとで配布されます。
 
